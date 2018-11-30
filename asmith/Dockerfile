@@ -4,6 +4,8 @@ USER root
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt-get update
+
 # Install all basic OS dependencies
 RUN apt-get update \
   && apt-get install -yq --no-install-recommends \
@@ -109,14 +111,50 @@ RUN apt-get install -y --no-install-recommends \
     python3-dev \
   && apt-get clean
 
+#install git, vim
+
+RUN apt-get install -y git \
+	                     vim \
+                       curl
+
+#install kaggle cli
+RUN pip install kaggle
+
+#mongo cli
+RUN apt-get install -y mongodb-clients
+
+#mysql shell
+RUN apt-get install -y mysql-client
+
+#postgre shell
+RUN apt-get install -y postgresql-client
+
+
+#install Rclone
+#RUN wget https://rclone.org/install.sh
+#RUN chmod +x install.sh
+#RUN ./install.sh
+RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
+RUN unzip rclone-current-linux-amd64.zip
+#RUN cd rclone-*-linux-amd64
+RUN ls rclone-*-linux-amd64
+RUN cp rclone-*-linux-amd64/rclone /usr/bin/
+RUN chown root:root /usr/bin/rclone
+RUN chmod 755 /usr/bin/rclone
+
+
+
 # R Repo, see https://cran.r-project.org/bin/linux/ubuntu/README.html
 RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN add-apt-repository ppa:marutter/c2d4u3.5
 
 # R-specific packages
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    r-base \
     r-base-core \
+    r-recommended \
     r-base-dev \
     r-cran-boot \
     r-cran-class \
@@ -131,7 +169,7 @@ RUN apt-get update \
     r-cran-nlme \
     r-cran-nnet \
     r-cran-rgl \
-    r-cran-rjava
+    r-cran-rjava \
     r-cran-rpart \
     r-cran-spatial \
     r-cran-survival

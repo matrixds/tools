@@ -5,6 +5,5 @@ p<-c('tidyverse','ggplot2','plotly','shiny','shinydashboard','devtools','FinCal'
      'forcats','testthat','plumber','RCurl','rvest','mailR','nlme','foreign','lattice',
      'expm','Matrix','flexdashboard','caret','mlbench','plotROC','tidyverse','RJDBC','rgdal')
 
-install.packages(p,dependencies = TRUE)
 
-.libPaths( c( .libPaths(), "/srv/R/library") )
+install.packages(p,dependencies = TRUE)

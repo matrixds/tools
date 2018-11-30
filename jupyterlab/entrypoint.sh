@@ -8,19 +8,11 @@ mkdir -p /app/jupyter/runtime
 mkdir -p /app/jupyter/ipython
 mkdir -p $HOME/.pip
 
-[[ -f $HOME/.pip/pip.conf ]] || cp /app/pip.conf $HOME/.pip/.
+[ -f $HOME/.pip/pip.conf ] || cp /app/pip.conf $HOME/.pip/.
 
 export JUPYTER_RUNTIME_DIR=/app/jupyter/runtime
 export IPYTHONDIR=/app/jupyter/ipython
 
-# Sort out R
-mkdir -p /home/matrix/R/library
-chown -R matrix:matrix /home/matrix/R
-[ -f  /home/matrix/.Rprofile ] || echo '.libPaths("/home/jupyter/R/library")' > /home/matrix/.Rprofile
-chown matrix:matrix /home/matrix/.Rprofile
-[ -f  /home/matrix/.Renvron ] || echo 'R_LIBS=/usr/local/lib/R/site-library:/usr/local/lib/R/library:/usr/lib/R/library:/home/jupyter/R/library
-' > /home/matrix/.Renvron
-chown matrix:matrix /home/matrix/.Renvron
 
 # Run it
 jupyter lab
