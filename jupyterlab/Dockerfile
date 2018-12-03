@@ -11,29 +11,8 @@ RUN apt-get update && apt-get install -y \
       default-jre default-jdk \
       && apt-get clean
 
-#RUN apt-get update && apt-get install -y \
-#      python3-pip sudo libnlopt-dev \
-#      r-base-dev  icu-devtools zlib1g-dev libncurses5-dev libsasl2-dev \
-#      libssl-dev libxml2-dev openjdk-8-jdk  r-cran-rjava libmariadb-client-lgpl-dev libpq-dev texlive-xetex \
-#      default-jre default-jdk r-base-core icu-devtools zlib1g-dev libncurses5-dev libsasl2-dev \
-#      libnlopt-dev libgmp3-dev libglu1-mesa-dev libssl-dev libxml2-dev openjdk-8-jdk \
-#      libmariadb-client-lgpl-dev r-cran-rgl libmpfr-dev libpq-dev texlive-xetex libgdal-dev libudunits2-dev \
-#      libmagick++-dev mesa-common-dev libcurl4-gnutls-dev \
-#      && \
-#    apt-get clean
-
-
 #python 
-#RUN pip3 install jupyterlab numpy matplotlib pandas
-#RUN conda install pip
 RUN pip install jupyterlab numpy
-
-#RUN conda install -c conda-forge jupyterlab
-
-# Set to use python 3 as the default
-#RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
-
-#RUN conda install nb_conda
 
 WORKDIR /app
 COPY entrypoint.sh .

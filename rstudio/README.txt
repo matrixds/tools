@@ -1,15 +1,14 @@
-Welcome to your MatrixDS tool. 
+Welcome to your MatrixDS R with RStudio tool. 
 
-Anything you save in the matrixds_project_files folder will be saved to the project and available to other tools. 
+Anything you save in the home directory (or subdirectories) is saved directly into the MatrixDS project and available on the website file explorer and any other tools. 
 
-Anything not saved in the matrixds_project_files folder will stay locally on this tool and will not be available to the project. 
+For example, you can edit files here which are used with presentation tools that serve content like HTML, Shiny apps or Bokeh apps. Change your documents here and they are automatically deployed to other tools!  
 
-WARNING: Anything not saved in the matrixds_project_files folder will be lost when the tool is stopped.
-
-There a lot of great things you can do from this tool,  command line clients include:
+There a lot of great things you can do from this tool. All common data science libraries are pre-installed for you. Also, when using the terminal from within RStudio available command line clients include:
 
 ####### Connect to other services ###########
--git
+-Git
+-Kaggle cli api
 -RClone (Sync your MatrixDS project with dropbox, google drive, S3, and many other cloud storage services: https://rclone.org/ )
 
 ######## Connect to databases #############
@@ -17,5 +16,5 @@ There a lot of great things you can do from this tool,  command line clients inc
 -PostgreSQL
 -Mongo
 
-######## Connect to kaggle ###############
--kaggle
+More information on how to use tools can be found in the user guide:
+http://userguide.matrixds.com

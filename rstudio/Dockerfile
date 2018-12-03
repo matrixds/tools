@@ -1,12 +1,10 @@
-FROM rbase:v1
+FROM matrixds/rbase:v1
 
 ARG RSTUDIO_VERSION
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
 
 #Creating etc folder at /usr/local/lib/R/ location Searce
 RUN mkdir -p /usr/local/lib/R/etc
-
-
 
 ## Download and install RStudio server & dependencies
 ## Attempts to get detect latest version, otherwise falls back to version given in $VER
@@ -73,15 +71,9 @@ RUN apt-get update \
 
 COPY userconf.sh /etc/cont-init.d/userconf
 
-## running with "-e ADD=shiny" adds shiny server
-#COPY add_shiny.sh /etc/cont-init.d/add
-
 COPY pam-helper.sh /usr/lib/rstudio-server/bin/pam-helper
 
 EXPOSE 8787
-
-## automatically link a shared volume for kitematic users
-#VOLUME /home/rstudio/kitematic
 
 COPY user-settings /home/rstudio/.rstudio/monitored/user-settings/
 # No chown will cause "RStudio Initalization Error"
@@ -95,19 +87,12 @@ RUN \
   apt-get update && apt-get install -y && \
   DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
     default-jre default-jdk icu-devtools && apt-get clean
-#    r-base-core icu-devtools zlib1g-dev libncurses5-dev libsasl2-dev libnlopt-dev libgmp3-dev libglu1-mesa-dev \
-#    libssl-dev libxml2-dev openjdk-8-jdk  r-cran-rjava libmariadb-client-lgpl-dev r-cran-rgl libmpfr-dev \
-#    libpq-dev texlive-xetex libgdal-dev libudunits2-dev libmagick++-dev \
-#    && apt-get clean
-#  R CMD javareconf
 
 COPY entrypoint.sh /entrypoint.sh
 
 #add encrypted auth html file
 COPY encrypted-sign-in.htm /usr/lib/rstudio-server/www/templates/encrypted-sign-in.htm
 
-#Reset password for rstudio user
-#RUN echo "rstudio:rstudio" | chpasswd
 
 RUN   usermod -u 1100 rstudio && \
       groupmod -g 1100 rstudio && \
@@ -122,4 +107,3 @@ COPY README.txt /home/rstudio/README.txt
 
 ENTRYPOINT ["sh", "-c", "/entrypoint.sh >>/var/log/stdout.log 2>>/var/log/stderr.log"]
 
-#CMD ["/init"]
