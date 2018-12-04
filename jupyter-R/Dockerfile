@@ -28,7 +28,7 @@ RUN groupadd --gid=1100 matrix && \
 # Somewhere to put the sqllite DB which cannot be on NFS
 RUN mkdir /app/jupyter && chown -R matrix:matrix /app/
 RUN touch /var/log/stderr.log && touch /var/log/stdout.log && chown matrix:matrix /var/log/stderr.log && chown matrix:matrix /var/log/stdout.log
-COPY README.txt /home/matrix/README.txt
+COPY README.txt /home/README.txt
 
 # R
 COPY packages.R .
