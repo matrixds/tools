@@ -1,4 +1,4 @@
-FROM dockerpratik/rbase:v1
+FROM matrixds/rbase:v1
 
 # R Repo
 RUN  echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' > /etc/apt/sources.list.d/rstudio.list
@@ -28,7 +28,7 @@ RUN groupadd --gid=1100 matrix && \
 # Somewhere to put the sqllite DB which cannot be on NFS
 RUN mkdir /app/jupyter && chown -R matrix:matrix /app/
 RUN touch /var/log/stderr.log && touch /var/log/stdout.log && chown matrix:matrix /var/log/stderr.log && chown matrix:matrix /var/log/stdout.log
-COPY README.txt /home/README.txt
+COPY README.txt /home/rstudio/README.txt
 
 # R
 COPY packages.R .

@@ -1,4 +1,4 @@
-FROM dockerpratik/rbase:v1
+FROM matrixds/rbase:v1
 
 RUN apt-get update && apt-get install -y \
     gdebi-core \

@@ -1,4 +1,4 @@
-FROM dockerpratik/asmith:v1
+FROM matrixds/asmith:v1
 RUN apt-get update && apt-get install -y curl
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -48,8 +48,9 @@ RUN conda install protobuf
 RUN conda install xlrd
 RUN conda install ipywidgets
 RUN conda install tensorflow  
-RUN pip3 install facets   
 
 RUN apt-get remove -y python
 RUN rm /usr/bin/python
 RUN ln -s /opt/conda/bin/python /usr/bin/python
+
+RUN pip install facets 
