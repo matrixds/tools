@@ -3,7 +3,8 @@ p<-c('tidyverse','ggplot2','plotly','shiny','shinydashboard','devtools','FinCal'
      'htmlwidgets','rmarkdown','lubridate','leaflet','sparklyr','magrittr','openxlsx',
      'packrat','roxygen2','knitr','readr','readxl','stringr','broom','feather',
      'forcats','testthat','plumber','RCurl','rvest','mailR','nlme','foreign','lattice',
-     'expm','Matrix','flexdashboard','caret','mlbench','plotROC','tidyverse','RJDBC','rgdal')
+     'expm','Matrix','flexdashboard','caret','mlbench','plotROC','tidyverse','RJDBC','rgdal',
+     'highcharter','tidyquant','timetk','quantmod','PerformanceAnalytics','scales')
 
 
 install.packages(p,dependencies = TRUE)
