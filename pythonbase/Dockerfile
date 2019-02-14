@@ -1,4 +1,4 @@
-FROM matrixds/asmith:v1
+FROM asmith:r1
 RUN apt-get update && apt-get install -y curl
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -43,14 +43,16 @@ RUN conda install bokeh
 RUN conda install sqlalchemy
 RUN conda install hdf5
 RUN conda install vincent
+RUN conda install plotly
 RUN conda install beautifulsoup4
 RUN conda install protobuf
 RUN conda install xlrd
 RUN conda install ipywidgets
 RUN conda install tensorflow  
+RUN conda install python=3
 
-RUN apt-get remove -y python
-RUN rm /usr/bin/python
-RUN ln -s /opt/conda/bin/python /usr/bin/python
+#RUN apt-get remove -y python
+#RUN rm /usr/bin/python
+#RUN ln -s /opt/conda/bin/python /usr/bin/python
 
-RUN pip install facets 
+RUN pip install facets
