@@ -4,8 +4,19 @@ if [ -z "${PREFIX}" ]; then
 else
     PREFIX_PARAM="--prefix ${PREFIX}";
 fi
-mkdir -p /app/bokeh
-cp -r /apps/*.py /app/bokeh/
+
+
+if [ ! -d "/app/bokeh" ]
+then
+  mkdir -p /app/bokeh
+  cp -r /apps/* /app/bokeh/
+else 
+  if [ ! "$(ls -A /app/bokeh)" ]
+   then
+     cp -r /apps/* /app/bokeh/
+  else
+  fi
+fi
 
 #bokeh serve --port ${PORT} --address 0.0.0.0 --allow-websocket-origin=18.136.146.77:5100 --log-level ${LOG_LEVEL} /apps/app1
 #bokeh serve --port ${PORT} --address 0.0.0.0 --allow-websocket-origin=18.136.146.77:5100 --log-level ${LOG_LEVEL} /apps/linegraph
