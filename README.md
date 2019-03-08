@@ -2,15 +2,15 @@
 The [MatrixDS](http://matrixds.com) community platform is a data science workbench that runs on a kubernetes engine. MatrixDS projects are a network directory containing files, code, data, and dependencies. The project directory is mounted, as a file system, onto different environments (tools). The workbench manages all of the container deoployment considerations through the web interface. 
 
 ## MatrixDS Public Tools
-Contained in this repository is the set of docker files and related configurations for [MatrixDS](http://matrixds.com) compatible tool containers. 
+Contained in this repository is the set of dockerfiles and related configurations for [MatrixDS](http://matrixds.com) compatible tool containers. 
 
-The goal of providing this set of tool containers from which the data science community can use as a base to build your own. While our base images have quite a robust offereing users may have unique dependieces that require building their own image. Some of these applications may include:
+The goal of providing this set of tool containers it so that the data science community can use them as a base to build their own. While our base images have a robust offereing, users may have unique dependieces that require building their own image. Some of these applications may include:
 
 * Teaching a data science or machine learning course
 * Giving a MOOC or tutorial
 * Custom Enviroments for a specific project
 
-When building your own image use this tree to guide your decision. All munge/modeling images are build off a base images called **Agent Smith (asmith)**.
+When building your own image use this tree to guide your decision. All munge/modeling images are built off a base image called **Agent Smith (asmith)**.
 
 ![](/img/tree.png)
 
