@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<!--
+#
+# encrypted-sign-in.htm
+#
+# Copyright (C) 2009-17 by RStudio, Inc., MatrixDS
+#
+# This program is licensed to you under the terms of version 3 of the
+# GNU Affero General Public License. This program is distributed WITHOUT
+# ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING THOSE OF NON-INFRINGEMENT,
+# MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. Please refer to the
+# AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) for more details.
+#
+-->
+<html>
+<head>
+<script type="text/javascript" src="/js/encrypt.min.js"></script>
+<script type="text/javascript">
+function prepare() {
+
+   try {
+      var payload = "rstudio" + "\n" + "matrix";
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/auth-public-key", true);
+      xhr.onreadystatechange = function() {
+         try {
+            if (xhr.readyState == 4) {
+               if (xhr.status != 200) {
+                  var errorMessage;
+                  if (xhr.status == 0)
+                     errorMessage = "Error: Could not reach server--check your internet connection";
+                  else
+                     errorMessage = "Error: " + xhr.statusText;
+
+                  if (typeof(errorp.innerText) == 'undefined')
+                     console.log(errorMessage);
+                  else
+                     console.log(errorMessage);
+               }
+               else {
+                  var response = xhr.responseText;
+                  var chunks = response.split(':', 2);
+                  var exp = chunks[0];
+                  var mod = chunks[1];
+                  var encrypted = encrypt(payload, exp, mod);
+                  document.getElementById('persist').value = 1;
+                  document.getElementById('package').value = encrypted;
+                  document.getElementById('clientPath').value = window.location.pathname;
+                  document.realform.submit();
+               }
+            }
+         } catch (exception) {
+            console.log("Error: " + exception);
+         }
+      };
+      xhr.send(null);
+   } catch (exception) {
+      console.log("Error: " + exception);
+   }
+}
+function submitRealForm() {
+   if (prepare())
+      document.realform.submit();
+}
+</script>
+
+</head>
+<form action="auth-do-sign-in" name="realform" method="POST">
+   <input type="hidden" name="persist" id="persist" value=""/>
+   <input type="hidden" name="appUri" value=""/>
+   <input type="hidden" name="clientPath" id="clientPath" value=""/>
+   <input id="package" type="hidden" name="v" value=""/>
+</form>
+<script>
+  submitRealForm();
+</script>
+</body>
+</html>

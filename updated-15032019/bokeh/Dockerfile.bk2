@@ -1,0 +1,29 @@
+FROM shrutinaik22/pythonbase:latest
+
+# Install nodejs (see: https://askubuntu.com/a/720814)
+#RUN curl -sL https://deb.nodesource.com/setup_8.x | bash \
+#    && apt-get install nodejs \
+#    && apt-get -yq autoremove \
+#    && apt-get clean \
+#    && rm -rf /var/lib/apt/lists/*
+
+#ARG VERSION
+#RUN echo $VERSION
+#RUN pip install --upgrade pip \
+#    && pip install --pre -i https://pypi.anaconda.org/bokeh/channel/dev/simple --extra-index-url https://pypi.python.org/simple/ bokeh==0.9 \
+#    && rm -rf ~/.cache/pip
+
+RUN pip install --upgrade pip
+#RUN pip install --pre -i https://pypi.anaconda.org/bokeh/channel/dev/simple --extra-index-url https://pypi.python.org/simple/ bokeh==0.9
+RUN pip install bokeh
+
+# Add entrypoint (this allows variable expansion)
+#COPY entrypoint.sh /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
+
+ENV ORIGIN="18.136.146:5100" PORT="5100" PREFIX="" LOG_LEVEL="debug" 
+EXPOSE 5100
+RUN ls /
+#COPY ./app /app
+#WORKDIR /
+#ENTRYPOINT ["./entrypoint.sh"]
