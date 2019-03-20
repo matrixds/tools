@@ -3,7 +3,8 @@ cd $HOME
 
 mkdir -p $HOME/.jupyter
 cp /app/jupyter_notebook_config.py $HOME/.jupyter/.
-cp /home/README.txt /home/matrix/README.txt
+#cp /home/README.txt /home/matrix/README.txt
+cp /README.txt /home/matrix/README.txt
 
 mkdir -p /app/jupyter/runtime
 mkdir -p /app/jupyter/ipython
