@@ -1,4 +1,5 @@
-FROM matrixds/asmith:v1
+
+FROM matrixds/asmith:v2
 
 COPY packages.R /usr/local/lib/R/packages.R
 
