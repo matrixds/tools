@@ -1,4 +1,4 @@
-FROM matrixds/rbase:v1
+FROM matrixds/rbase:v2
 
 ARG RSTUDIO_VERSION
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
