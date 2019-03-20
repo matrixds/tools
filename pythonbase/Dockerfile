@@ -1,4 +1,4 @@
-FROM asmith:r1
+FROM matrixds/asmith:v2
 RUN apt-get update && apt-get install -y curl
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
