@@ -1,4 +1,4 @@
-FROM matrixds/rbase:v1
+FROM matrixds/rbase:v2
 
 RUN apt-get update && apt-get install -y \
     gdebi-core \
@@ -10,6 +10,10 @@ RUN apt-get update && apt-get install -y \
     xtail
 
 COPY entrypoint.sh /entrypoint.sh
+RUN mkdir -p /root/shiny-server/
+RUN mkdir -p /root/shiny-server/example_shiny/
+COPY app.R /root/shiny-server/example_shiny/app.R
+
 
 # Download and install shiny server
 RUN wget --no-verbose https://download3.rstudio.org/ubuntu-14.04/x86_64/VERSION -O "version.txt" && \
