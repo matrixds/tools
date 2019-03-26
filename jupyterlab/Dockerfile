@@ -35,4 +35,5 @@ USER matrix
 WORKDIR /home/matrix
 EXPOSE 8888
 
-ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh >>/var/log/stdout.log 2>>/var/log/stderr.log"]
+ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh"]
+#ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh >>/var/log/stdout.log 2>>/var/log/stderr.log"]
