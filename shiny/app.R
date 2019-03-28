@@ -1,6 +1,5 @@
 #
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
+# This is a Shiny web application on MatrixDS. 
 #
 # Find out more about building applications with Shiny here:
 #
@@ -8,39 +7,44 @@
 #
 
 ##########################################################################################
-# This points the Shiny server tool to where all your Rstudio Libraries are installed
-# that means that any library you install on your Rstudio instance in this project,
+# This points the Shiny server tool to any libraries installed with RStudio 
+# that means that any library you install on your RStudio instance in this project,
 # will be available to the shiny server
 ##########################################################################################
-.libPaths( c( .libPaths(), "/srv/R/library") )
+
+.libPaths( c( .libPaths(), "/srv/.R/library") )
 
 ##########################################################################################
 # Here you can call all the required libraries for your code to run
 ##########################################################################################
+
 library(shiny)
 
 ##########################################################################################
 # For deploying tools on MatrixDS, we created this production variable
 # when set to true, your shiny app will run on the shiny server tool upon clicking open
-# when set to false, your shiny app will run when you hit the "Run App" button on Rstudio
+# when set to false, your shiny app will run when you hit the "Run App" button on RStudio
 ##########################################################################################
+
 production <- TRUE
 
 ##########################################################################################
-# The shiny server tool uses a different path than Rstudio.
-# this if statement denotes the correct  path for the 2 values of the production variable
+# The shiny server tool uses a different absolute path than RStudio.
+# this if statement denotes the correct path for the 2 values of the production variable
 ##########################################################################################
 
 if(production == FALSE) {
-  shiny_path <- "~/shiny-server/ProstateApp/"
+  #if you using the RStudio tool
+  shiny_path <- "~/shiny-server/"
   home_path <- "~/"
 } else {
-  shiny_path <- "/srv/shiny-server/ProstateApp/"
+  #if you are using the shiny tool
+  shiny_path <- "/srv/shiny-server/"
   home_path <- "/srv/"
 }
 
 ##########################################################################################
-# To call a file/artifact on your MatrixDS project use the following line of code
+# To call a file/artifact in your MatrixDS project use the following line of code
 # this example uses the function read.csv
 #  my_csv <- read.csv(paste0(home_path,"file_name.csv"))
 ##########################################################################################

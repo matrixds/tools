@@ -1,6 +1,6 @@
 Welcome to your MatrixDS tool. 
 
-Anything you save in the home directory (or subdirectories) is saved directly into the MatrixDS project and available on the website file explorer and any other tools. 
+Anything you save in the home directory (or subdirectories) is saved directly into the MatrixDS project and available on the website file explorer and any other tool. 
 
 For example, you can edit files here which are used with presentation tools that serve content like HTML, Shiny apps or Bokeh apps. Change your documents here and they are automatically deployed to other tools!   
 

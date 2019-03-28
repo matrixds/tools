@@ -1,4 +1,4 @@
-FROM matrixds/rbase:v1
+FROM matrixds/rbase:v2
 
 # R Repo
 RUN  echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' > /etc/apt/sources.list.d/rstudio.list

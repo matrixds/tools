@@ -1,4 +1,4 @@
-FROM asmith:v2
+FROM matrixds/asmith:v2
 
 ENV JULIA_DEPOT_PATH=/opt/julia
 ENV JULIA_PKGDIR=/opt/julia

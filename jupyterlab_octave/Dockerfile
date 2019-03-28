@@ -1,15 +1,9 @@
-FROM matrixds/pythonbase:v3
+FROM matrixds/octave:v1
 
 RUN echo $PATH
 RUN /usr/bin/python --version
 
-# R Repo
-RUN  echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' > /etc/apt/sources.list.d/rstudio.list
-RUN  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-
-RUN apt-get update && apt-get install -y \
-      default-jre default-jdk \
-      && apt-get clean
+RUN apt-get update && apt-get clean
 
 #python 
 RUN pip install jupyterlab numpy
@@ -35,5 +29,4 @@ USER matrix
 WORKDIR /home/matrix
 EXPOSE 8888
 
-ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh"]
-#ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh >>/var/log/stdout.log 2>>/var/log/stderr.log"]
+ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh >>/var/log/stdout.log 2>>/var/log/stderr.log"]

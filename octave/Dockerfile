@@ -1,4 +1,4 @@
-FROM asmith:v2
+FROM matrixds/asmith:v2
 
 RUN apt-get -y update
 RUN pip install --upgrade pip
