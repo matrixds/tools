@@ -8,7 +8,7 @@ The goal of providing this set of tool containers it so that the data science co
 
 * Teaching a data science or machine learning course
 * Giving a MOOC or tutorial
-* Custom Enviroments for a specific project
+* Custom enviroments for a specific project
 
 When building your own image use this tree to guide your decision. All munge/modeling images are built off a base image called **Agent Smith (asmith)**.
 
