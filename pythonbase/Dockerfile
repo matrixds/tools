@@ -48,7 +48,7 @@ RUN conda install beautifulsoup4
 RUN conda install protobuf
 RUN conda install xlrd
 RUN conda install ipywidgets
-RUN conda install tensorflow  
+RUN conda install tensorflow
 RUN conda install python=3
 
 #RUN apt-get remove -y python
@@ -56,3 +56,4 @@ RUN conda install python=3
 #RUN ln -s /opt/conda/bin/python /usr/bin/python
 
 RUN pip install facets
+RUN pip install mlflow

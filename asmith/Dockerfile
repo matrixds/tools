@@ -118,7 +118,8 @@ RUN apt-get install -y git \
                        curl
 
 #install kaggle cli
-RUN pip install kaggle
+RUN pip install kaggle 
+RUN pip install dvc
 
 #mongo cli
 RUN apt-get install -y mongodb-clients
@@ -131,12 +132,8 @@ RUN apt-get install -y postgresql-client
 
 
 #install Rclone
-#RUN wget https://rclone.org/install.sh
-#RUN chmod +x install.sh
-#RUN ./install.sh
 RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
 RUN unzip rclone-current-linux-amd64.zip
-#RUN cd rclone-*-linux-amd64
 RUN ls rclone-*-linux-amd64
 RUN cp rclone-*-linux-amd64/rclone /usr/bin/
 RUN chown root:root /usr/bin/rclone
@@ -162,13 +159,7 @@ RUN apt-get update \
     r-cran-codetools \
     r-cran-foreign \
     r-cran-kernsmooth \
-    r-cran-lattice \
-    r-cran-mass \
     r-cran-matrix \
-    r-cran-mgcv \
-    r-cran-nlme \
-    r-cran-nnet \
-    r-cran-rgl \
     r-cran-rjava \
     r-cran-rpart \
     r-cran-spatial \
@@ -177,9 +168,6 @@ COPY r_packages.R .
 RUN R CMD javareconf \
   && Rscript r_packages.R \
   && rm r_packages.R
-
-# Install experimental dependencies
-# RUN apt-get install -y --no-install-recommends \
 
 # Add Tini
 ENV TINI_VERSION v0.18.0
