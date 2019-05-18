@@ -1,8 +1,11 @@
-FROM matrixds/asmith:v2
+FROM matrixds/asmith:v3
+
+RUN apt-get update
+RUN apt-get install libzmq-dev
 
 ENV JULIA_DEPOT_PATH=/opt/julia
 ENV JULIA_PKGDIR=/opt/julia
-ENV JULIA_VERSION=1.1.0
+ENV JULIA_VERSION=1.1.1
 
 RUN mkdir /opt/julia-${JULIA_VERSION} && \
     cd /tmp && \

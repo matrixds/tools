@@ -118,8 +118,7 @@ RUN apt-get install -y git \
                        curl
 
 #install kaggle cli
-RUN pip install kaggle 
-RUN pip install dvc
+RUN pip install kaggle dvc tensorflow
 
 #mongo cli
 RUN apt-get install -y mongodb-clients

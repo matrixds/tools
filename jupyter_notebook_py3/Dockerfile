@@ -1,4 +1,4 @@
-FROM matrixds/pythonbase:v3
+FROM matrixds/pythonbase:v4
 
 RUN \
     apt-get update && \

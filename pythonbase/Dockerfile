@@ -1,4 +1,4 @@
-FROM matrixds/asmith:v2
+FROM matrixds/asmith:v3
 RUN apt-get update && apt-get install -y curl
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -24,36 +24,15 @@ RUN chmod +x /usr/bin/tini
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
 
+RUN conda update -n base -c defaults conda
 
-RUN conda install pandas
-RUN conda install numexpr 
-RUN conda install matplotlib
-RUN conda install scipy
-RUN conda install seaborn
-RUN conda install scikit-learn
-RUN conda install scikit-image
-RUN conda install sympy
-RUN conda install cython
-RUN conda install patsy
+RUN conda install pandas numexpr matplotlib scipy seaborn scikit-learn \
+				 scikit-image sympy cython patsy cloudpickle dill numba \
+				 bokeh sqlalchemy hdf5 vincent plotly beautifulsoup4 \
+				 protobuf xlrd ipywidgets tensorflow 
+
 RUN conda install -c conda-forge statsmodels  
-RUN conda install cloudpickle
-RUN conda install dill
-RUN conda install numba
-RUN conda install bokeh
-RUN conda install sqlalchemy
-RUN conda install hdf5
-RUN conda install vincent
-RUN conda install plotly
-RUN conda install beautifulsoup4
-RUN conda install protobuf
-RUN conda install xlrd
-RUN conda install ipywidgets
-RUN conda install tensorflow
+
 RUN conda install python=3
 
-#RUN apt-get remove -y python
-#RUN rm /usr/bin/python
-#RUN ln -s /opt/conda/bin/python /usr/bin/python
-
-RUN pip install facets
-RUN pip install mlflow
+RUN pip install facets mlflow

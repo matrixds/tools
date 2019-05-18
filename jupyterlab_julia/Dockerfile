@@ -1,4 +1,6 @@
-FROM matrixds/asmith:v2
+FROM matrixds/asmith:v3
+
+RUN apt-get update && apt-get clean
 
 #python 
 RUN pip install jupyterlab numpy
@@ -26,8 +28,6 @@ ENV JULIA_VERSION=1.1.0
 RUN echo $PATH
 RUN /usr/bin/python --version
 
-RUN apt-get update && apt-get clean
-
 #julia
 RUN mkdir /opt/julia-${JULIA_VERSION} && \
     cd /tmp && \
@@ -38,9 +38,11 @@ RUN mkdir /opt/julia-${JULIA_VERSION} && \
 	ln -fs /opt/julia-*/bin/julia /usr/local/bin/julia
 
 RUN julia -e 'import Pkg; Pkg.update()' && \
-    julia -e "using Pkg; pkg\"add Gadfly RDatasets IJulia InstantiateFromURL\"; pkg\"precompile\"" && \
-	cp -r /root/.local/share/jupyter/kernels/julia-* /usr/local/share/jupyter/kernels/ &&  \
-    chmod -R +rx /usr/local/share/jupyter/kernels/julia-*/ 
+    julia -e "using Pkg; pkg\"add Gadfly RDatasets IJulia InstantiateFromURL PyPlot Images\"; pkg\"precompile\"" 
+
+RUN	cp -r /root/.local/share/jupyter/kernels/julia-* /usr/local/share/jupyter/kernels/ &&  \
+    chmod -R +rx /usr/local/share/jupyter/kernels/julia-*/ && \
+    chmod -R +rx /opt/julia/
 
 USER matrix
 WORKDIR /home/matrix

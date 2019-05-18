@@ -1,18 +1,14 @@
-FROM matrixds/pythonbase:v3
+FROM matrixds/pythonbase:v4
 
 RUN echo $PATH
 RUN /usr/bin/python --version
 
-# R Repo
-RUN  echo 'deb http://cran.rstudio.com/bin/linux/ubuntu xenial/' > /etc/apt/sources.list.d/rstudio.list
-RUN  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-
-RUN apt-get update && apt-get install -y \
-      default-jre default-jdk \
-      && apt-get clean
-
 #python 
 RUN pip install jupyterlab numpy
+
+#jupyterlab extenstion
+RUN conda install -c conda-forge nodejs
+RUN jupyter labextension install @lckr/jupyterlab_variableinspector
 
 WORKDIR /app
 COPY entrypoint.sh .

@@ -1,5 +1,6 @@
 #Script for common package installation on MatrixDS docker image
-p<-c('tidyverse','plotly','shiny','shinydashboard','devtools','FinCal','googleVis','DT',
+p<-c('nnet','kknn','randomForest','xgboost','tidyverse','plotly','shiny','shinydashboard',
+	  'devtools','FinCal','googleVis','DT', 'kernlab','earth',
      'htmlwidgets','rmarkdown','lubridate','leaflet','sparklyr','magrittr','openxlsx',
      'packrat','roxygen2','knitr','readr','readxl','stringr','broom','feather',
      'forcats','testthat','plumber','RCurl','rvest','mailR','nlme','foreign','lattice',
