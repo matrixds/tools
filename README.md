@@ -4,7 +4,7 @@ The [MatrixDS](http://matrixds.com) community platform is a data science workben
 ## MatrixDS Public Tools
 Contained in this repository is the set of dockerfiles and related configurations for [MatrixDS](http://matrixds.com) compatible tool containers. 
 
-The goal of providing this set of tool containers it so that the data science community can use them as a base to build their own. While our base images have a robust offereing, users may have unique dependieces that require building their own image. Some of these applications may include:
+The goal of providing this set of containers is for the data scientists to use them as a starting point for environment creation. While our base images have a robust offereing, users may have unique dependieces that require building their own image. Some of these applications may include:
 
 * Teaching a data science or machine learning course
 * Giving a MOOC or tutorial
