@@ -29,7 +29,7 @@ RUN conda update -n base -c defaults conda
 RUN conda install pandas numexpr matplotlib scipy seaborn scikit-learn \
 				 scikit-image sympy cython patsy cloudpickle dill numba \
 				 bokeh sqlalchemy hdf5 vincent plotly beautifulsoup4 \
-				 protobuf xlrd ipywidgets tensorflow 
+				 protobuf xlrd ipywidgets tensorflow keras
 
 RUN conda install -c conda-forge statsmodels  
 

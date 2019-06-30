@@ -17,4 +17,4 @@ export IPYTHONDIR=/app/jupyter/ipython
 
 
 # Run it
-jupyter lab
+jupyter lab --allow-root

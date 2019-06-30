@@ -1,4 +1,9 @@
-FROM matrixds/octave:v1
+FROM matrixds/asmith:v3
+
+RUN apt-get -y update
+RUN pip install --upgrade pip
+RUN pip install octave_kernel
+RUN apt-get install -y octave
 
 RUN echo $PATH
 RUN /usr/bin/python --version

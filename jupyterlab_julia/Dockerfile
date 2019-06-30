@@ -16,17 +16,17 @@ RUN groupadd --gid=1100 matrix && \
     useradd --create-home --uid=1100 --gid=1100 matrix && \
     echo 'matrix ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers
 
+USER root
+WORKDIR /home/matrix
+
 # Somewhere to put the sqllite DB which cannot be on NFS
-RUN mkdir /app/jupyter && chown -R matrix:matrix /app/
+RUN chown -R matrix:matrix /app/ && mkdir /app/jupyter 
 RUN touch /var/log/stderr.log && touch /var/log/stdout.log && chown matrix:matrix /var/log/stderr.log && chown matrix:matrix /var/log/stdout.log
 
 ENV JULIA_DEPOT_PATH=/opt/julia
-ENV JULIA_PKGDIR /usr/local/share/julia/site
+ENV JULIA_PKGDIR=/opt/julia
 ENV JUPYTER /usr/local/bin/jupyter
 ENV JULIA_VERSION=1.1.0
-
-RUN echo $PATH
-RUN /usr/bin/python --version
 
 #julia
 RUN mkdir /opt/julia-${JULIA_VERSION} && \
@@ -38,16 +38,15 @@ RUN mkdir /opt/julia-${JULIA_VERSION} && \
 	ln -fs /opt/julia-*/bin/julia /usr/local/bin/julia
 
 RUN julia -e 'import Pkg; Pkg.update()' && \
-    julia -e "using Pkg; pkg\"add Gadfly RDatasets IJulia InstantiateFromURL PyPlot Images\"; pkg\"precompile\"" 
+    julia -e "using Pkg; pkg\"add Gadfly RDatasets IJulia InstantiateFromURL PyPlot Images DataFrames\"; pkg\"precompile\"" 
 
 RUN	cp -r /root/.local/share/jupyter/kernels/julia-* /usr/local/share/jupyter/kernels/ &&  \
     chmod -R +rx /usr/local/share/jupyter/kernels/julia-*/ && \
-    chmod -R +rx /opt/julia/
+    chmod -R +rx /opt/julia 
 
-USER matrix
-WORKDIR /home/matrix
 EXPOSE 8888
 
 COPY README.txt /README.txt
 
-ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh >>/var/log/stdout.log 2>>/var/log/stderr.log"]
+ENTRYPOINT ["sh", "-c", "/app/entrypoint.sh --allow-root >>/var/log/stdout.log 2>>/var/log/stderr.log"]
+

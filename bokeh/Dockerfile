@@ -1,5 +1,4 @@
-FROM matrixds/pythonbase:v3
-
+FROM matrixds/pythonbase:v5
 # Install nodejs (see: https://askubuntu.com/a/720814)
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash \
     && apt-get install nodejs \
