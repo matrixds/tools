@@ -19,7 +19,6 @@ RUN chmod +x /entrypoint.sh
 
 ENV ORIGIN="127.0.0.1:5100" PORT="5100" PREFIX="" LOG_LEVEL="info"
 
-# Example comment
 EXPOSE 5100
 
 COPY ./apps/ /apps

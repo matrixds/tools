@@ -9,7 +9,6 @@ There a lot of great things you can do from this tool. All common data science l
 ####### Connect to other services ###########
 -Git
 -Kaggle cli api
--RClone (Sync your MatrixDS project with dropbox, google drive, S3, and many other cloud storage services: https://rclone.org/ )
 
 ######## Connect to databases #############
 -MySQL

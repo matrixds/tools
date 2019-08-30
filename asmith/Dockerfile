@@ -129,45 +129,6 @@ RUN apt-get install -y mysql-client
 #postgre shell
 RUN apt-get install -y postgresql-client
 
-
-#install Rclone
-RUN curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
-RUN unzip rclone-current-linux-amd64.zip
-RUN ls rclone-*-linux-amd64
-RUN cp rclone-*-linux-amd64/rclone /usr/bin/
-RUN chown root:root /usr/bin/rclone
-RUN chmod 755 /usr/bin/rclone
-
-
-
-# R Repo, see https://cran.r-project.org/bin/linux/ubuntu/README.html
-RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN add-apt-repository ppa:marutter/c2d4u3.5
-
-# R-specific packages
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    r-base \
-    r-base-core \
-    r-recommended \
-    r-base-dev \
-    r-cran-boot \
-    r-cran-class \
-    r-cran-cluster \
-    r-cran-codetools \
-    r-cran-foreign \
-    r-cran-kernsmooth \
-    r-cran-matrix \
-    r-cran-rjava \
-    r-cran-rpart \
-    r-cran-spatial \
-    r-cran-survival
-COPY r_packages.R .
-RUN R CMD javareconf \
-  && Rscript r_packages.R \
-  && rm r_packages.R
-
 # Add Tini
 ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini

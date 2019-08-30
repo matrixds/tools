@@ -1,4 +1,4 @@
-FROM matrixds/asmith:v3
+FROM matrixds/asmith:v4
 RUN apt-get update && apt-get install -y curl
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -28,8 +28,10 @@ RUN conda update -n base -c defaults conda
 
 RUN conda install pandas numexpr matplotlib scipy seaborn scikit-learn \
 				 scikit-image sympy cython patsy cloudpickle dill numba \
-				 bokeh sqlalchemy hdf5 vincent plotly beautifulsoup4 \
+				 bokeh sqlalchemy hdf5 plotly beautifulsoup4 \
 				 protobuf xlrd ipywidgets tensorflow keras
+
+RUN conda install -c pytorch -c fastai fastai pytorch torchvision cuda92
 
 RUN conda install -c conda-forge statsmodels  
 
