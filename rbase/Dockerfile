@@ -1,5 +1,8 @@
 FROM matrixds/asmith:v4
 
+#install some helper python packages
+RUN pip install sympy numpy
+
 # R Repo, see https://cran.r-project.org/bin/linux/ubuntu/README.html
 RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9

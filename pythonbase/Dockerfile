@@ -1,4 +1,4 @@
-FROM matrixds/asmith:v4
+FROM matrixds/asmith
 RUN apt-get update && apt-get install -y curl
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -17,11 +17,6 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-4.5.11-Linux-x86
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc
 
-ENV TINI_VERSION v0.16.1
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
-
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
 
 RUN conda update -n base -c defaults conda
@@ -31,10 +26,9 @@ RUN conda install pandas numexpr matplotlib scipy seaborn scikit-learn \
 				 bokeh sqlalchemy hdf5 plotly beautifulsoup4 \
 				 protobuf xlrd ipywidgets tensorflow keras
 
-RUN conda install -c pytorch -c fastai fastai pytorch torchvision cuda92
-
 RUN conda install -c conda-forge statsmodels  
 
 RUN conda install python=3
 
-RUN pip install facets mlflow
+RUN pip install datetime matplotlib psycopg2 pandas \
+        seaborn numpy nltk gensim

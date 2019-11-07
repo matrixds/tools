@@ -6,7 +6,7 @@ p<-c('nnet','kknn','randomForest','xgboost','tidyverse','plotly','shiny','shinyd
      'forcats','testthat','plumber','RCurl','rvest','mailR','nlme','foreign','lattice',
      'expm','Matrix','flexdashboard','caret','mlbench','plotROC','RJDBC','rgdal',
      'highcharter','tidyquant','timetk','quantmod','PerformanceAnalytics','scales',
-     'tidymodels','C50','xgboost','parsnip','rmetalog')
+     'tidymodels','C50','xgboost','parsnip','rmetalog','reticulate')
 
 
 install.packages(p,dependencies = TRUE)

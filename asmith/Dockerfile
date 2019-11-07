@@ -114,11 +114,11 @@ RUN apt-get install -y --no-install-recommends \
 #install git, vim
 
 RUN apt-get install -y git \
-	                     vim \
+	                   vim \
                        curl
 
 #install kaggle cli
-RUN pip install kaggle dvc tensorflow
+RUN pip install kaggle dvc tensorflow keras pandas 
 
 #mongo cli
 RUN apt-get install -y mongodb-clients

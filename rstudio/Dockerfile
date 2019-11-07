@@ -1,4 +1,10 @@
-FROM matrixds/rbase:v3
+FROM matrixds/rbase
+
+COPY packages.R /usr/local/lib/R/packages.R
+
+#install R packages
+RUN R CMD javareconf && \
+    Rscript /usr/local/lib/R/packages.R
 
 ARG RSTUDIO_VERSION
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH

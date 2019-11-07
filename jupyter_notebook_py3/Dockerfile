@@ -1,4 +1,4 @@
-FROM matrixds/pythonbase:fastai
+FROM matrixds/pythonbase
 
 RUN \
     apt-get update && \
