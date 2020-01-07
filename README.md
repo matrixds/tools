@@ -1,5 +1,5 @@
 ### MatrixDS
-The [MatrixDS](http://matrixds.com) community platform is a data science workbench that runs on a kubernetes engine. MatrixDS projects are a network directory containing files, code, data, and dependencies. The project directory is mounted, as a file system, onto different environments (tools). The workbench manages all of the container deoployment considerations through the web interface. 
+The [MatrixDS](http://matrixds.com) community platform is a data science workbench that runs natively on kubernetes. MatrixDS projects are a network directory containing files, code, data, and dependencies. The project directory is mounted, as a file system, onto different environments (tools). The workbench manages all of the container deoployment considerations through the web interface. 
 
 ## MatrixDS Public Tools
 Contained in this repository is the set of dockerfiles and related configurations for [MatrixDS](http://matrixds.com) compatible tool containers. 
