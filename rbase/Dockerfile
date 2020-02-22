@@ -1,7 +1,8 @@
-FROM matrixds/asmith:v4
+FROM matrixds/asmith
+#FROM matrixds/asmith:slim1
 
 #install some helper python packages
-RUN pip install sympy numpy
+RUN pip3 install sympy numpy
 
 # R Repo, see https://cran.r-project.org/bin/linux/ubuntu/README.html
 RUN echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' >> /etc/apt/sources.list
