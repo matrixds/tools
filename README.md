@@ -14,7 +14,7 @@ When building your own image use this tree to guide your decision. All munge/mod
 
 ![](/img/tree.png)
 
-The subdirectories in this repo contain all the files necessary for an automated build on docker hub. The MatrixDS docker hub site with official images can [be found here.](https://hub.docker.com/u/matrixds/dashboard/). Once you have an image built push it to Docker Hub and then you can deploy it directly on MatrixDS
+The subdirectories in this repo contain all the files necessary for an automated build on docker hub. The MatrixDS docker hub site with official images can [be found here.](https://hub.docker.com/orgs/matrixds). Once you have an image built push it to Docker Hub and then you can deploy it directly on MatrixDS
 
 ## Deploying Tools
 Using any docker hub container creates quite a bit of flexibility for adding cutting-edge tools to your analytics project. Each tool has a hostname in the detail panel for connectivity purposes. A word of caution is to pay close attention to where you put the mount path for each tool as that is where you will be able to access MatrixDS project files. The defalut mount paths for munge/model and present tools are:
