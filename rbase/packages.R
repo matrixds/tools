@@ -5,7 +5,10 @@ p<-c('nnet','kknn','randomForest','xgboost','tidyverse','plotly','shiny','shinyd
      'packrat','roxygen2','knitr','readr','readxl','stringr','broom','feather',
      'forcats','testthat','plumber','RCurl','rvest','nlme','foreign','lattice',
      'expm','Matrix','flexdashboard','mlbench','plotROC','RJDBC','rgdal',
-     'highcharter','timetk','scales', 'C50','xgboost','reticulate')
+     'highcharter','timetk','scales', 'C50','xgboost','reticulate',
+     'shinyWidgets','flextable','knitr','ggiraph','ECharts2Shiny','kableExtra')
 
 
 install.packages(p,dependencies = TRUE)
+
+devtools::install_github("laresbernardo/lares")

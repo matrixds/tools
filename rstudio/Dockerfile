@@ -30,8 +30,8 @@ RUN apt-get update \
 # && RSTUDIO_LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
 # && [ -z "$RSTUDIO_VERSION" ] && RSTUDIO_VERSION=$RSTUDIO_LATEST || true \
   # hard code the v1.2
-   && wget -q https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-1.2.1511-amd64.deb \
-   && dpkg -i rstudio-server-1.2.1511-amd64.deb \
+   && wget -q https://download2.rstudio.org/server/trusty/amd64/rstudio-server-1.2.5042-amd64.deb \
+   && dpkg -i rstudio-server-1.2.5042-amd64.deb \
   #use this for latest
  # && wget -q http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
  # && dpkg -i rstudio-server-${RSTUDIO_VERSION}-amd64.deb \

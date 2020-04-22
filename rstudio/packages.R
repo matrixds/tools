@@ -1,5 +1,5 @@
 #Script for common package installation on MatrixDS docker image
-p<-c('reticulate')
+p<-c('stringdist')
 
 
 install.packages(p,dependencies = TRUE)
