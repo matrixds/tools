@@ -1,4 +1,4 @@
-FROM matrixds/rbase
+FROM matrixds/rbase:22oct20
 
 COPY packages.R /usr/local/lib/R/packages.R
 
@@ -8,8 +8,6 @@ RUN R CMD javareconf && \
 
 RUN apt-get update && apt-get install -y \
     gdebi-core \
-    pandoc \
-    pandoc-citeproc \
     libcurl4-gnutls-dev \
     libcairo2-dev \
     libxt-dev \
